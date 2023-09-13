@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@*<link href="https://kendo.cdn.telerik.com/themes/6.7.0/default/default-main.css" rel="stylesheet" />
+<script src="js/jquery.min.js"></script>
+
+
+<script src="js/kendo.all.min.js"></script>*@
+
+<script src="~/js/product.js" asp-append-version="true"></script>
+
+<h2>All Product</h2>
+<div class="float-r">
+   <button style="font-size:20px;" title="Add Product" id="btnModal"
+           data-toggle="modal" data-target="#MyModal">
+      <i class="fa fa-plus">Add Product</i>
+   </button>
+</div>
+<table class="table table-bordered" id="tble">
+   <thead>
+      <tr>
+         <td>Name</td>
+         <td>Description</td>
+         <td>Category</td>
+      </tr>
+   </thead>
+   <tbody>
+   </tbody>
+</table>
+
+ 
+<!-- Modal -->
+<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter Product Information</h5>
+         </div>
+         <div class="modal-body">
+            <div class="form-group">
+               <label id="txtId" hidden></label>
+               <label class="control-label">Name</label>
+               <input class="form-control" type="text" id="txtName" />
+            </div>
+            <div class="form-group">
+               <label class="control-label">Description</label>
+               <input class="form-control" type="text" id="txtDescription" />
+            </div>
+            @*<div class="form-group">
+               <label class="control-label">Category</label>
+               <select class="form-control" id="ddlCategoryID"></select>
+            </div>*@
+            <div class="form-group">
+               <label  class="control-label">Category</label>
+               <div class="form-group">
+                  <select class="form-control" id="ddlCategoryID"></select>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="Close()" id="btnClose" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="btnSave">Save changes</button>
+            <button type="button" class="btn btn-primary" onclick="Update()" id="btnUpdate">Update changes</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
