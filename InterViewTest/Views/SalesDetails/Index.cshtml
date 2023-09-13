@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/js/salesdetails.js" asp-append-version="true"></script>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="btnModal" data-toggle="modal" data-target="#MyModal">
+   Launch demo modal
+</button>
+<table class="table table-bordered" id="tble">
+   <thead>
+      <tr>
+         <td>Name</td>
+         <td>UnitPrice</td>
+         <td>Quantity</td>
+         <td>Description</td>
+         <td>CreationDate</td>
+         <td>Edit</td>
+         <td>Delete</td>
+      </tr>
+   </thead>
+   <tbody>
+
+   </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-md-4">
+                  <label id="txtId" hidden></label>
+                 @* <span id="spanParentID" style="display:none">0</span>*@
+                  <label class="control-label">Name</label>
+                  <input class="form-control" type="text" id="txtName" />
+               </div>
+               <div class="col-md-4"> 
+                  <label class="control-label">UnitPrice</label>
+                  <input class="form-control" type="text" id="txtUnitPrice" />
+               </div>
+               <div class="col-md-4"> 
+                  <label class="control-label">Quantity</label>
+                  <input class="form-control" type="text" id="txtQuantity" />
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-8"> 
+                  <label class="control-label">Description</label>
+                  <input class="form-control" type="text" id="txtDescription" />
+               </div>
+               <div class="col-md-4"> 
+                  <label class="control-label">Creation Date</label>
+                  <input class="form-control" type="date" id="dteCreationDate" />
+               </div> 
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnClose" onclick="Close()" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="btnSave" onclick="Save()">Save</button>
+         </div>
+      </div>
+   </div>
+</div>

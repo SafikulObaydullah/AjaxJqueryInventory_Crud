@@ -11,5 +11,6 @@ namespace InterViewTest.Models
       public DbSet<Employee> Employees { get; set;}
       public DbSet<Product> Products { get; set;}
       public DbSet<Category> Categories { get; set;}
+      public DbSet<SalesDetails> SalesDetails { get; set;}
    }
 }
