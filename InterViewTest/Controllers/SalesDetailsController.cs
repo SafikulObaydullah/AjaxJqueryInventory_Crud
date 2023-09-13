@@ -10,6 +10,10 @@ namespace InterViewTest.Controllers
    public class SalesDetailsController : Controller
    {
       private readonly ApplicationDbContext _context;
+      public SalesDetailsController(ApplicationDbContext context)
+      {
+         _context = context;
+      }
       public IActionResult Index()
       {
          return View();
@@ -32,23 +36,22 @@ namespace InterViewTest.Controllers
       [HttpGet("GetAll")]
       public IEnumerable<SalesDetailsVM> GetAll()
       {
-         var data = (from sal in _context.SalesDetails  
+         var data = (from sal in _context.SalesDetails
                      select new SalesDetailsVM
                      {
-                        Id = sal.Id == null?0:sal.Id,
-                        Name = sal.Name == null?"":sal.Name,
+                        Id = sal.Id == null ? 0 : sal.Id,
+                        Name = sal.Name == null ? "" : sal.Name,
                         UnitPrice = sal.UnitPrice == null ? 0 : sal.UnitPrice,
-                        Quantity = sal.Quantity == null? 0:sal.Quantity,   
+                        Quantity = sal.Quantity == null ? 0 : sal.Quantity,
                         Description = sal.Description == null ? "" : sal.Description,
-                        CreatedDate = sal.CreatedDate == null ? DateTime.Now:sal.CreatedDate,
+                        CreatedDate = sal.CreatedDate == null ? DateTime.Now : sal.CreatedDate,
                      }).ToList();
-         if(data.Count > 0 )
-         {
+         //if (data.Count > 0)
+         //{
             return data;
-         }
-         else { return Enumerable.Empty<SalesDetailsVM>();}
-         
+         //} 
       }
+
       public JsonResult GetById(int id)
       {
          return Json(_context.SalesDetails.Find(id));
