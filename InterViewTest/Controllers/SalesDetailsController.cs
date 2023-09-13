@@ -2,6 +2,7 @@
 using InterViewTest.VewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace InterViewTest.Controllers
@@ -31,17 +32,22 @@ namespace InterViewTest.Controllers
       [HttpGet("GetAll")]
       public IEnumerable<SalesDetailsVM> GetAll()
       {
-         var data = (from prd in _context.SalesDetails  
+         var data = (from sal in _context.SalesDetails  
                      select new SalesDetailsVM
                      {
-                        Id = prd.Id == null?0:prd.Id,
-                        Name = prd.Name == null?"":prd.Name,
-                        UnitPrice = prd.UnitPrice == null ? 0 : prd.UnitPrice,
-                        Quantity = prd.Quantity == null? 0:prd.Quantity,   
-                        Description = prd.Description == null ? "" : prd.Description,
-                        CreatedDate = prd.CreatedDate == null ? DateTime.Now:prd.CreatedDate,
+                        Id = sal.Id == null?0:sal.Id,
+                        Name = sal.Name == null?"":sal.Name,
+                        UnitPrice = sal.UnitPrice == null ? 0 : sal.UnitPrice,
+                        Quantity = sal.Quantity == null? 0:sal.Quantity,   
+                        Description = sal.Description == null ? "" : sal.Description,
+                        CreatedDate = sal.CreatedDate == null ? DateTime.Now:sal.CreatedDate,
                      }).ToList();
-         return data;
+         if(data.Count > 0 )
+         {
+            return data;
+         }
+         else { return Enumerable.Empty<SalesDetailsVM>();}
+         
       }
       public JsonResult GetById(int id)
       {
